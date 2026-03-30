@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registered Users</title>
+</head>
+
+<body style="font-family: Arial, sans-serif; background: #f4f6f9; margin: 0; padding: 20px;">
+
+    <h2 style="text-align: center; margin-bottom: 20px; color: #333;">Registered Users</h2>
+
+    <div style="max-width: 900px; margin: auto; background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+
+        <table style="width: 100%; border-collapse: collapse;">
+
+            <thead>
+                <tr style="background: #667eea; color: white;">
+                    <th style="padding: 12px; text-align: left;">Name</th>
+                    <th style="padding: 12px; text-align: left;">Email</th>
+                    <th style="padding: 12px; text-align: left;">Password</th>
+                </tr>
+            </thead>
+
+            <tbody id="userTable"></tbody>
+
+        </table>
+    </div>
+
+    <script>
+        const users = JSON.parse(localStorage.getItem("users")) || [];
+        const table = document.getElementById("userTable");
+
+        users.forEach(user => {
+            const row = `<tr style="border-bottom: 1px solid #ddd;">
+                            <td style="padding: 10px;">${user.name}</td>
+                            <td style="padding: 10px;">${user.email}</td>
+                            <td style="padding: 10px;">${user.password}</td>
+                         </tr>`;
+            table.innerHTML += row;
+        });
+    </script>
+
+</body>
+</html>
